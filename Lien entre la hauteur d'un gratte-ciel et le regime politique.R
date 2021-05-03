@@ -32,14 +32,4 @@ predictions
 table(predictions, reality=Democracy[-choisis])/50
 #62% de prédictions correctes et 38% incorrects
 
-# Comparaison avec la liberté de la presse. Voir s'il y a un lien entre la liberté de la presse et le regime en place 
-
-choisis=sample(1:164, 114)
-model=glm(Democracy ~ PressF, family=binomial, data=my_data[choisis,])
-model$coefficients
-predictions=predict(model, newdata=my_data[-choisis,], type="response")
-predictions=ifelse(predictions>0.5, 1, 0)
-table(predictions, reality=Democracy[-choisis])/50
-
-#80% de predictions correctes vs 20% d'erreurs 
  
